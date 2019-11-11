@@ -4,5 +4,6 @@
   tasks:
     - name: Install Windows Updates
       win_updates:
+        log_file: C:\Users\Administrator\Desktop\update_log.txt
         category_names: "{{ categories | default(omit) }}"
         reboot: '{{ reboot_server | default(yes) }}'
