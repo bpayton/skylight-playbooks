@@ -3,15 +3,13 @@
   hosts: all
 
   tasks:
-    - name: install iis
+    - name: install and enable iis
       win_feature:
         name: Web-Server
         state: present
-
-    - name: start iis service
-      win_service:
-        name: W3Svc
-        state: started
+        restart: yes
+        include_sub_features: yes
+        include_management_tools: yes
 
     - name: Create website index.html
       win_copy:
